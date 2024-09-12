@@ -32,7 +32,7 @@ const limiter = rateLimit({
 // Middlewares Start 
 app.use(helmet());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://admin-ecom-9d97.onrender.com",
     // origin: "http://localhost:3000",
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
@@ -42,7 +42,7 @@ app.use(cors({
 if(process.env.MODE_ENV === "Development"){
     app.use(morgan('dev'));
 }
-app.use("http://localhost:5173",limiter);
+app.use("https://admin-ecom-9d97.onrender.com",limiter);
 // app.use("http://localhost:3000",limiter);
 
 
