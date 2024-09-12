@@ -56,16 +56,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(mongoSanitize());
 app.use(cookieParser());
 
-// app.use((req, res, next) => {
-//   console.log('Before XSS Clean:', req.body);
-//   next();
-// });
 app.use(xssClean());
-// app.use((req, res, next) => {
-//   console.log('After XSS Clean:', req.body);
-//   next();
-// });
-
 
   //Routes
 app.use('/auth/user',AuthRouter);
@@ -79,10 +70,6 @@ app.use('/admin',CouponRouter);
 app.use(handleAppError);
 
 app.use(express.static(path.join(__dirname, 'admin_frontend/dist')))
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'admin_frontend/dist/index.html'));
-// });
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin_frontend','dist','index.html'));
