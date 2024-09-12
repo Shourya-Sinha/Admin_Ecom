@@ -3,6 +3,7 @@ import axios from "axios";
 import { showSnackbar } from "./InitialSlice.jsx";
 import { authBaseUrl } from "./AusthSlice.jsx";
 
+// export const productDataUrl = "http://localhost:7000/admin";
 export const productDataUrl = "https://admin-ecom-9d97.onrender.com/admin";
 const initialState = {
   isLoading: null,

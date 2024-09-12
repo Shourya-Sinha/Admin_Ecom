@@ -33,7 +33,7 @@ const limiter = rateLimit({
 app.use(helmet());
 app.use(cors({
     origin: "https://admin-ecom-9d97.onrender.com",
-    // origin: "http://localhost:3000",
+    // origin: "http://localhost:7000",
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'X-Custom-Header'],
@@ -43,7 +43,7 @@ if(process.env.MODE_ENV === "Development"){
     app.use(morgan('dev'));
 }
 app.use("https://admin-ecom-9d97.onrender.com",limiter);
-// app.use("http://localhost:3000",limiter);
+// app.use("http://localhost:7000",limiter);
 
 
 app.use(cookieSession({

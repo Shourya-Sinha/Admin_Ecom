@@ -13,6 +13,7 @@ import {
   Stack,
   IconButton,
   CircularProgress,
+  Typography,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteColor, getAllColors } from "../../../Redux/Slices/DataSlice";
