@@ -37,10 +37,10 @@ app.use(
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
         scriptSrcElem: ["'self'", "https://cdn.jsdelivr.net"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net","https://fonts.googleapis.com",],
         imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
-        fontSrc: ["'self'", "https://cdn.jsdelivr.net"],
-        connectSrc: ["'self'"],
+        fontSrc: ["'self'", "https://cdn.jsdelivr.net","https://fonts.gstatic.com"],
+        connectSrc: ["'self'", "https://fonts.googleapis.com","https://fonts.gstatic.com"],
       },
     })
   );
