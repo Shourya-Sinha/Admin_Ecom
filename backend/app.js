@@ -30,7 +30,20 @@ const limiter = rateLimit({
 });
 
 // Middlewares Start 
-app.use(helmet());
+// app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+        scriptSrcElem: ["'self'", "https://cdn.jsdelivr.net"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+        imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
+        fontSrc: ["'self'", "https://cdn.jsdelivr.net"],
+        connectSrc: ["'self'"],
+      },
+    })
+  );
 app.use(cors({
     origin: "https://admin-ecom-9d97.onrender.com",
     // origin: "http://localhost:7000",
