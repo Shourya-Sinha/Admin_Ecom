@@ -44,7 +44,8 @@ const MainLayout = (theme) => {
 
   const handleLogout = async() => {
     try {
-      await dispatch(logoutUser());
+      // await dispatch(logoutUser()) ||  dispatch(resetAuthStateLogout())
+      dispatch(resetAuthStateLogout());
     } catch (error) {
       dispatch(resetAuthStateLogout());
     }

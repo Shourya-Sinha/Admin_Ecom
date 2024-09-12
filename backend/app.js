@@ -46,7 +46,7 @@ app.use(
   );
 app.use(cors({
     origin: "https://admin-ecom-9d97.onrender.com",
-    // origin: "http://localhost:7000",
+    // origin: ["http://localhost:5173"],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'X-Custom-Header'],
@@ -56,7 +56,7 @@ if(process.env.MODE_ENV === "Development"){
     app.use(morgan('dev'));
 }
 app.use("https://admin-ecom-9d97.onrender.com",limiter);
-// app.use("http://localhost:7000",limiter);
+// app.use("http://localhost:5173",limiter);
 
 
 app.use(cookieSession({

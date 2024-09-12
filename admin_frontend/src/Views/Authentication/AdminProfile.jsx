@@ -24,34 +24,46 @@ import { RedEnvelopeFilled, SettingFilled } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { authBaseUrl } from "../../Redux/Slices/AusthSlice";
+// const authBaseUrl = 'http://localhost:7000/auth/user';
 
 const AdminProfile = () => {
   const currentYear = new Date().getFullYear();
-  const [adminDeatils,setAdminDetails] = useState({});
-  const token = useSelector((state)=> state.auth.token);
+  const [adminDeatils, setAdminDetails] = useState({});
+  const token = useSelector((state) => state.auth.token);
 
-  const getAdminDeatils =async()=>{
+  const getAdminDeatils = async () => {
     try {
-      const response = await axios.get(`${authBaseUrl}/admin-stats`,{
+      if (!token) {
+        console.warn('No token found. Unable to fetch admin details.');
+        return;
+      }
+      // console.log('Fetching admin details with token:', token); // Debug token
+      const response = await axios.get(`${authBaseUrl}/admin-stats`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      // console.log('Response data:', response.data); // Debug response
       setAdminDetails(response.data);
     } catch (error) {
-      console.log('error on page',error.message);
+      console.error('Error fetching admin details:', error.message); // Improved error logging
     }
-  }
+  };
 
-  useEffect(()=>{
-     try {
-       getAdminDeatils();
-     } catch (error) {
-      console.log('error',error);
-     }
-  },[token]);
+  useEffect(() => {
+    // console.log('Token in useEffect:', token); // Debug token
+    if (token) {
+      getAdminDeatils();
+    } else {
+      console.log('Token is not available yet.');
+    }
+  }, [token]);
+  
 
-  console.log('our detyails',adminDeatils);
+  // console.log('Admin details:', adminDeatils);
+  const admin = adminDeatils.admin || {};
+
+  console.log('admin',admin);
   return (
     <>
       <Box sx={{ width: "100%", height: "100%", overflowX: "hidden" }}>
@@ -107,7 +119,7 @@ const AdminProfile = () => {
                   variant={"h6"}
                   sx={{ fontSize: "1.25rem", fontWeight: 600 }}
                 >
-                  {adminDeatils.adminDetails.firstName + " " + adminDeatils.adminDetails.lastName || 'N/A'}
+                  {adminDeatils.admin?.firstName || 'N/A'} {adminDeatils.admin?.lastName || 'N/A'}
                 </Typography>
                 <Typography
                   variant={"subtitle2"}
@@ -303,7 +315,7 @@ const AdminProfile = () => {
                       color: "rgba(255,255,255,0.8)",
                     }}
                   >
-                    &nbsp; {adminDeatils.adminDetails.firstName + " " + adminDeatils.adminDetails.lastName || 'N/A'}
+                    &nbsp; {adminDeatils.admin?.firstName || 'N/A'} {adminDeatils.admin?.lastName || 'N/A'}
                   </Typography>
                 </Stack>
                 <Stack direction={"row"} alignItems={"center"} paddingY={1}>
@@ -324,7 +336,7 @@ const AdminProfile = () => {
                       color: "rgba(255,255,255,0.8)",
                     }}
                   >
-                    &nbsp; {adminDeatils.adminDetails.email || 'N/A'}
+                    &nbsp; {adminDeatils.admin?.email || 'N/A'}
                   </Typography>
                 </Stack>
                 <Stack direction={"row"} alignItems={"center"} paddingY={1}>
@@ -345,7 +357,7 @@ const AdminProfile = () => {
                       color: "rgba(255,255,255,0.8)",
                     }}
                   >
-                    &nbsp; +91 {adminDeatils.adminDetails.phoneNo || 'N/A'}
+                    &nbsp; +91 {adminDeatils.admin?.phoneNo || 'N/A'}
                   </Typography>
                 </Stack>
                 <Stack direction={"row"} alignItems={"center"} paddingY={1}>

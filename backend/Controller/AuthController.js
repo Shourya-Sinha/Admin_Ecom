@@ -1950,7 +1950,7 @@ const userUpdateOrder = async (req, res, next) => {
 const getAdminStats = async (req, res) => {
   try {
     // Get admin details
-    const adminId = req.user._id;
+    const adminId = req.userId;
     const admin = await User.findById(adminId).select('firstName lastName email phoneNo address').populate('address');
 
     const today = new Date();

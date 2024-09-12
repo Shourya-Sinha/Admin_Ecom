@@ -130,7 +130,7 @@ export const logoutUser = createAsyncThunk(
     'auth/logout',
     async (_, { dispatch, getState, rejectWithValue }) => {
         try {
-            const { token } = getState().auth;  // Get token from state
+            const {token} = getState().auth.token;  // Get token from state
             const response = await axios.post(`${authBaseUrl}/logout`, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
