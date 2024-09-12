@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/server.js"
+    "start": "nodemon backend/server.js",
+    "server": "nodemon backend/server.js",
+    "build": "npm install && npm install --prefix admin_frontend && npm run build --prefix admin_frontend"
   },
   "author": "SHOURYA SINHA",
   "license": "ISC",

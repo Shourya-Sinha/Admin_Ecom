@@ -21,6 +21,7 @@ import { AccountCircle, LocalOffer } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { authBaseUrl, logoutUser, resetAuthStateLogout } from '../Redux/Slices/AusthSlice';
 import axios from 'axios';
+import MyImage from '../assets/dell.png'
   const { Header, Sider, Content } = Layout;
 
 const MainLayout = (theme) => {
@@ -245,8 +246,9 @@ const MainLayout = (theme) => {
             <img
               className="rounded"
               style={{ height: '32px', width: '32px',borderRadius:'50%' }}
-              src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
+              // src="https://via.placeholder.com/32"
+              src={MyImage}
+              alt="Placeholder"
             />
             <div style={{ lineHeight: 0 ,paddingLeft:'10px'}}>
               <h5 className="text-dark" style={{ fontSize: '14px' }}>

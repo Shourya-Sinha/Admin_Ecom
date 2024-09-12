@@ -5,13 +5,11 @@ import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
-  LinearScale,
   BarElement,
   Title,
   Tooltip,
   Legend,
-  PointElement,
-  LineElement
+  LineController, LineElement, PointElement, LinearScale
 } from "chart.js";
 import { AccessTime, AttachMoney, Check, Group, ListAlt, Visibility } from "@mui/icons-material";
 import { useSelector } from "react-redux";
@@ -20,13 +18,12 @@ import { authBaseUrl } from '../../Redux/Slices/AusthSlice'
 // Register the necessary components with Chart.js
 ChartJS.register(
   CategoryScale,
-  LinearScale,
   BarElement,
   Title,
   Tooltip,
   Legend,
-  PointElement,
-  LineElement
+
+  LineController, LineElement, PointElement, LinearScale
 );
 
 const options = {

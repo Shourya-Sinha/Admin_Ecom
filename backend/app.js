@@ -16,6 +16,8 @@ import ProductRouter from './Routes/ProductRoute.js';
 import AddressRouter from './Routes/AddressRoute.js'
 import CouponRouter from './Routes/CouponRoute.js';
 import handleAppError from './Utills/ErrorHnadler.js';
+import path from 'path';
+const __dirname = path.resolve();
 
 dotenv.config();
 const app = express();
@@ -75,6 +77,16 @@ app.use('/user',AddressRouter);
 app.use('/admin',CouponRouter);
 
 app.use(handleAppError);
+
+app.use(express.static(path.join(__dirname, 'admin_frontend/dist')))
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'admin_frontend/dist/index.html'));
+// });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'admin_frontend','dist','index.html'));
+});
 
 export default app;
 
