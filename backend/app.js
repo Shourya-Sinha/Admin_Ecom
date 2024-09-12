@@ -58,7 +58,6 @@ if(process.env.MODE_ENV === "Development"){
 app.use("https://admin-ecom-9d97.onrender.com",limiter);
 // app.use("http://localhost:5173",limiter);
 
-
 app.use(cookieSession({
     name: 'session',
     keys: [process.env.SESSION_SECRET || 'default_secret_key'], // use a secret key from the environment variables or a default one
